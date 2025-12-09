@@ -159,6 +159,31 @@ st.markdown("""
         color: #ffffff !important;
     }
     
+    /* --- BOTÃO SECUNDÁRIO (COPO) --- */
+    a[kind="secondary"] {
+        width: 100%;
+        background-color: transparent;
+        color: #001F5B !important;
+        text-decoration: none;
+        padding: 16px;
+        border-radius: 10px;
+        font-weight: 700;
+        font-size: 16px;
+        text-align: center;
+        display: block;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border: 2px solid #001F5B;
+        margin-top: 10px;
+        box-sizing: border-box;
+        transition: all 0.3s ease;
+    }
+    a[kind="secondary"]:hover {
+        background-color: #001F5B;
+        color: #ffffff !important;
+        transform: translateY(-2px);
+    }
+    
     .success-text {
         text-align: center;
         color: #001F5B;
@@ -254,6 +279,7 @@ if buscar:
             encontrado = False
             nome_cliente = ""
             link_pagamento = ""
+            link_copo = ""
             
             # --- LOOP DE BUSCA ---
             for index, row in df.iterrows():
@@ -263,6 +289,7 @@ if buscar:
                 nome_excel = row.get('Nome', row.iloc[0] if len(row) > 0 else 'Cliente')
                 tel_excel_raw = str(row.get('Telefone', row.iloc[1] if len(row) > 1 else ''))
                 link_excel = row.get('Link Pagamento', row.iloc[2] if len(row) > 2 else '')
+                link_copo_excel = row.get('Link Copo', row.iloc[3] if len(row) > 3 else '')
                 
                 # Limpeza do número da planilha
                 tel_excel = tel_excel_raw.replace(".0", "").strip()
@@ -273,6 +300,7 @@ if buscar:
                     encontrado = True
                     nome_cliente = nome_excel
                     link_pagamento = link_excel
+                    link_copo = link_copo_excel
                     break
             
             # --- RESULTADO FINAL ---
@@ -288,7 +316,13 @@ if buscar:
                         </div>
                     """, unsafe_allow_html=True)
                     
+                    
+                    # Verifica se tem link do copo
+                    link_copo_final = link_copo if (link_copo and str(link_copo).strip() != "" and str(link_copo) != "nan") else "#"
+                    
                     st.link_button("COMPRE AGORA  >", link_pagamento, type="primary", use_container_width=True)
+                    if link_copo_final != "#":
+                         st.link_button("COMPRAR COPO DA FESTA >", link_copo_final, type="secondary", use_container_width=True)
             else:
                 st.markdown("<div class='error-msg'>❌ Número não encontrado. Verifique se digitou corretamente ou se já preencheu o formulário.</div>", unsafe_allow_html=True)
 
