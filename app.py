@@ -24,6 +24,7 @@ st.markdown("""
     header {visibility: hidden;}
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
+    [data-testid="stSidebar"] {display: none;}
     
     /* Fundo da página */
     .stApp {
