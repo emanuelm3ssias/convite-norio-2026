@@ -321,7 +321,7 @@ if buscar:
                     # Verifica se tem link do copo
                     link_copo_final = link_copo if (link_copo and str(link_copo).strip() != "" and str(link_copo) != "nan") else "#"
                     
-                    st.link_button("COMPRE AGORA  >", link_pagamento, type="primary", use_container_width=True)
+                    st.link_button("COMPRAR INGRESSO AGORA  >", link_pagamento, type="primary", use_container_width=True)
                     if link_copo_final != "#":
                          st.link_button("COMPRAR COPO DA FESTA >", link_copo_final, type="secondary", use_container_width=True)
             else:
