@@ -68,7 +68,7 @@ st.markdown("<h1>Réveillon NoRio 2026</h1>", unsafe_allow_html=True)
 
 st.markdown("""
     <div class='event-message'>
-        Nos aguardamos no Réveillon NoRio
+        Nos encontramos no Réveillon NoRio
     </div>
 """, unsafe_allow_html=True)
 
